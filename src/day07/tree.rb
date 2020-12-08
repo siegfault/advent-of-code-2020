@@ -11,7 +11,7 @@ class Tree
   end
 
   def inner_bags
-    []
+    bags_contained_in(child)
   end
 
   private
@@ -24,6 +24,11 @@ class Tree
     return [] if parents.empty?
 
     parents + parents.flat_map { |p| containers_for(p) }
+  end
+
+  def bags_contained_in(bag)
+    bg = bags.detect { |b| b == bag }
+    bg.children + bg.children.flat_map { |b| bags_contained_in(b) }
   end
 
   def bags
