@@ -22,10 +22,24 @@ RSpec.describe Tree do
       Bag.new(description: 'light red')
     ]
   end
+  let(:expected_children) do
+    [
+      [Bag.new(description: 'dark olive')] * 1,
+      [Bag.new(description: 'vibrant plum')] * 2,
+      [Bag.new(description: 'faded blue')] * 13,
+      [Bag.new(description: 'dotted black')] * 16
+    ].flatten
+  end
 
   it 'finds the outermost bags' do
     allow(File).to receive(:read)
     allow(File).to receive(:read).with('filename.txt').and_return(rules)
     expect(Tree.new(input: 'filename.txt', bag: 'shiny gold').outer_bags).to contain_exactly(*expected_parents)
+  end
+
+  it 'finds the inner bags' do
+    allow(File).to receive(:read)
+    allow(File).to receive(:read).with('filename.txt').and_return(rules)
+    expect(Tree.new(input: 'filename.txt', bag: 'shiny gold').inner_bags).to contain_exactly(*expected_children)
   end
 end

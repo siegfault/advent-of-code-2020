@@ -10,6 +10,10 @@ class Tree
     containers_for(child).uniq
   end
 
+  def inner_bags
+    []
+  end
+
   private
 
   attr_reader :input, :child
