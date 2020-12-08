@@ -18,4 +18,4 @@ OptionParser.new do |parser|
 end.parse(ARGV)
 
 tree = Tree.new(input: options[:input], bag: "#{options[:brightness]} #{options[:color]}")
-puts tree.outermost_bags.count
+puts tree.outer_bags.count

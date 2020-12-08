@@ -26,6 +26,6 @@ RSpec.describe Tree do
   it 'finds the outermost bags' do
     allow(File).to receive(:read)
     allow(File).to receive(:read).with('filename.txt').and_return(rules)
-    expect(Tree.new(input: 'filename.txt', bag: 'shiny gold').outermost_bags).to contain_exactly(*expected_parents)
+    expect(Tree.new(input: 'filename.txt', bag: 'shiny gold').outer_bags).to contain_exactly(*expected_parents)
   end
 end

@@ -4,10 +4,9 @@ class Tree
   def initialize(input:, bag:)
     @child = Bag.new(description: bag)
     @input = File.read(input)
-    @outermost_bags = []
   end
 
-  def outermost_bags
+  def outer_bags
     containers_for(child).uniq
   end
 
